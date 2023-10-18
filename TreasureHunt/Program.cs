@@ -1,4 +1,6 @@
-﻿using TreasureHunt.Helpers;
+﻿using System.IO;
+using System;
+using TreasureHunt.Helpers;
 
 namespace TreasureHunt
 {
@@ -6,20 +8,26 @@ namespace TreasureHunt
     {
         static void Main(string[] args)
         {
-            var input = "C:\\Users\\smoug\\source\\repos\\CarbonTechTest\\TreasureHunt\\Inputs\\1.txt";
-            var output = "C:\\Users\\smoug\\source\\repos\\CarbonTechTest\\TreasureHunt\\Outputs\\1.result.txt";
 
-            //transform file into map
-            var fileLines = FileManager.ReadFile(input);
-            var map = new Map();
-            map.Build(fileLines);
+            string scurrentdirectory = AppDomain.CurrentDomain.BaseDirectory;
+            
+            string inputDirectory = System.IO.Path.GetFullPath(@"..\..\..\Inputs");
 
-            //run map as long as it is good
-            while (!map.IsDone)
+
+            foreach (var input in Directory.GetFiles(inputDirectory))
             {
-                map.UpdateOneMovement();
-            };
-            FileManager.OutputResult(map, output);
+                //transform file into map
+                var fileLines = FileManager.ReadFile(input);
+                var map = new Map();
+                map.Build(fileLines);
+
+                //run map as long as it is good
+                while (!map.IsDone)
+                {
+                    map.UpdateOneMovement();
+                };
+                FileManager.OutputResult(map, input.Replace("Inputs", "Outputs").Replace(".txt", ".result.txt"));
+            }
         }
     }
 }

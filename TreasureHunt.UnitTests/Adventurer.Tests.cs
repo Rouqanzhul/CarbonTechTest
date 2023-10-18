@@ -177,14 +177,14 @@ namespace TreasureHunt.UnitTests
         }
 
         [TestCaseSource(nameof(_treasureCoordinates))]
-        public void CollectTreasure_Should_increase_adventurer_collectedTreasures_to_1_and_decrease_treasures_numbers(Coordinates adventurerCoordinates)
+        public void CollectTreasure_Should_increase_adventurer_collectedTreasures_to_1(Coordinates adventurerCoordinates)
         {
             adventurer.CollectPotentialTreasures(treasures, adventurerCoordinates);
             Assert.AreEqual(adventurer.TreasuresCollected, 1);
         }
 
         [TestCaseSource(nameof(_noTreasureCoordinates))]
-        public void CollectTreasure_Should_not_increase_adventurer_collectedTreasures_and_decrease_treasures_numbers(Coordinates adventurerCoordinates)
+        public void CollectTreasure_Should_not_increase_adventurer_collectedTreasures(Coordinates adventurerCoordinates)
         {
             adventurer.CollectPotentialTreasures(treasures, adventurerCoordinates);
              Assert.AreEqual(adventurer.TreasuresCollected, 0);

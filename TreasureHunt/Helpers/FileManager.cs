@@ -2,13 +2,14 @@
 {
     public static class FileManager
     {
-        public static IList<string> ReadFile(string inputFilePath)
+        public static IList<string> ReadFile(string fileName)
         {
+
             List<string> fileElements = new List<string>();
 
-            if (File.Exists(inputFilePath))
+            if (File.Exists(fileName))
             {
-                using (StreamReader streamReader = File.OpenText(inputFilePath))
+                using (StreamReader streamReader = File.OpenText(fileName))
                 {
                     string line;
                     while ((line = streamReader.ReadLine()) != null)
