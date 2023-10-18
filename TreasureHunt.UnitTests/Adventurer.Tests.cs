@@ -35,7 +35,7 @@ namespace TreasureHunt.UnitTests
 
         private static readonly object[] _noTreasureCoordinates = {
             new object[] {new Coordinates(1, 2)},
-            new object[] {new Coordinates(1, 3)}
+            new object[] {new Coordinates(1, 4)}
         };
 
         private static readonly object[] _adventurerCoordinates = {
